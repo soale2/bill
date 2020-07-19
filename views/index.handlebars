@@ -1,0 +1,77 @@
+<div class="row">
+        <div class="col-2">
+            <h1>Passione<br><i>"Shop for perfumes, <br> casual wear ,shoes"</i> </h1>
+            <a href="/product" class="btn">See Products</a>
+        </div>
+        <div class="col-2">
+            <img src="/css/assets/indexperf.jpg">
+        </div>
+        
+         <div class="index-description">
+             <h3>Checkout Selected Products Below</h3>
+         </div>
+<div class = "index-container">
+<div class="main-body">
+    <div id="product-section">
+        <form action="/bill/add" method="post">
+         {{!-- <div class="form-column">
+            <input type="number" name="billId" id="billId" class="form-control" placeholder="Bill Id" readonly>
+        </div> --}}
+        <div class="form-column">   
+        <input type="hidden" id="name" name="name" class="form-control" />
+        <select onchange="getCost(this)" class="form-control" name="product" id="product">
+            <option value="0">--Select--</option>
+            {{#each products}}
+            <option value="{{this.id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+        </div>
+       
+        <div class="form-column">
+            <input type="number" name="cost" id="cost" class="form-control" placeholder="Cost" readonly>
+        </div>
+        <div class="form-column">
+            <input type="number" placeholder="Quantity" onchange="calculatePrice();" class="form-control" name="quantity" id="quantity">
+        </div>
+        <div class="form-column">
+            <input type="number" placeholder="Price" class="form-control" name="price" id="price" readonly>
+        </div>
+        <div class="form-column">
+            <button class="btn-primary">Add</button>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="bill-section">
+    <table id="bill-table">
+        <caption id="table-title">Bill section</caption>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ProductName</th>
+                <th>Quantity</th>
+                <th>Cost</th>
+                <th>Price</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each bills}}
+              <tr>
+                  <td>{{this.id}}</td>
+                  <td>{{this.productname}}</td>
+                  <td>{{this.quantity}}</td>
+                  <td>{{this.cost}}</td>
+                  <td>{{this.price}}</td>
+                  {{!-- <td><button onclick="getBillById({{this.id}})" class="btn-alert">Edit</button></td> --}}
+                 <td><button onclick="deleteBill({{this.id}});" class="btn-danger">Delete</button></td>
+              </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div class="checkout-section">
+        <button onclick="checkOutBill();" class="btn-checkout">Checkout</button>
+    </div>
+</div>
+</div>
+</div>

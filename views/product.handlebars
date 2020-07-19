@@ -1,0 +1,99 @@
+<div class="prod-header">
+    <img src="/css/assets/shoe3.jpg">
+    <div class="prodhead">
+        <h1>Products</h1>
+        <p>Select Products On This Page</p>
+    </div>
+</div>
+<div class="product-container">
+<div id="body-section">
+    <div class="message-section">
+        {{#if success_msg}}
+        <span id="message-section">
+            {{this.success_msg}}
+        </span>
+        {{/if}}
+        {{#if error}}
+        <span id="error-section">
+            {{this.error}}
+        </span>
+        {{/if}}
+    </div>
+    <div class="create-section">
+          <form action="/product/add" method="post">
+           <div class="form-group">
+               <input type="text" class="form-control" name="name" placeholder="Name" id="">
+           </div>
+           <div class="form-group">
+               <select name="type" class="form-control" id="">
+                   <option value="0">--Select--</option>
+                   {{#each types}}
+                    <option value="{{this.id}}">{{this.name}}</option>
+                   {{/each}}
+               </select>
+           </div>
+           <div class="form-group">
+              <input type="number" name="cost" class="form-control" placeholder="Cost" id="">
+           </div>
+           <div class="form-group">
+              <button class="btn-primary">Add</button>
+           </div>
+          </form>
+    </div>
+    <div class="update-section">
+        <form action="/product/update" method="post" id="update-product">
+            <div class="form-group">
+                <input type="number" name="updateid" class="form-control" id="updateid" readonly>
+            </div>
+            <div class="form-group">
+                <input type="text" name="updatename" class="form-control" id="updatename">
+            </div>
+            <div class="form-group">
+                <select name="updatetype" class="form-control" id="updatetype">
+                    <option value="0">--Select--</option>
+                 {{#each types}}
+                    <option value="{{this.id}}">{{this.name}}</option>   
+                 {{/each}}
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="updatecost" id="updatecost">
+            </div>
+            <div class="form-group">
+                <button class="btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="table-section">
+    <table id="product-table">
+        <caption id="table-title">Product table</caption>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Cost</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+             <tr>
+                 <td>{{this.id}}</td>
+                 <td>{{this.name}}</td>
+                 <td>{{this.type}}</td>
+                 <td>{{this.cost}}</td>
+           
+                 <td><button onclick="getProductById({{this.id}})" class="btn-alert">Edit
+
+                 </button></td> 
+                 <td>
+                 <button onclick="deleteProduct({{this.id}});" class="btn-danger">Delete</button></td>
+             </tr>
+            {{/each}}
+           
+        </tbody>
+    </table>
+</div>
+</div>
