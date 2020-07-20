@@ -11,7 +11,7 @@ const exphbs=require('express-handlebars');
 const hbs=require('handlebars');
 const {allowInsecurePrototypeAccess}=require('@handlebars/allow-prototype-access');
 const flash=require('connect-flash');
-const port=8080||process.env.port;
+const port=process.env.PORT||8080;
 const app=express();
 app.set('view engine','handlebars');
 app.set('views',path.join(__dirname,'views'));
