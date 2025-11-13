@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.3",
-    "cloudinary": "^1.22.0",
+    "cloudinary": "^2.7.0",
     "connect-flash": "^0.1.1",
     "express": "^4.17.1",
     "express-handlebars": "^5.0.0",
